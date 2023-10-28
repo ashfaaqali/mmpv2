@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MotoMeterProv2</string>
+    <string name="settings">Settings</string>
+    <string name="meter">Meter</string>
+</resources>
