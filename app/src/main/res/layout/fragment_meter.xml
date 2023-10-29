@@ -4,23 +4,23 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/speed_screen_gradient">
+    android:background="@color/primary_lighter">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/speedTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textColor="@color/white"
-        android:textSize="70sp"
+        android:textColor="@color/primary"
+        android:textSize="100sp"
         android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/kmh_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="km_h"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:text="KM/H"
+        android:textColor="@color/primary"
+        android:textSize="20sp" />
 
 </LinearLayout>
