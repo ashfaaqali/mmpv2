@@ -6,4 +6,8 @@
     <string name="allow_call_rejection">Allow call rejection</string>
     <string name="rate_this_app">Rate this app on Google Play Store</string>
     <string name="share_this_app">Share this app</string>
+    <string name="motometer_pro_needs_precise_location_permission_to_do_the_job">MotoMeter PRO needs precise location permission to do the job.</string>
+    <string name="please_grant_permission_and_enable_location">Please grant permission and enable Location</string>
+    <string name="give_permission_and_enable_location">Give permission and enable Location</string>
+    <string name="please_grant_precise_location_permission_and_enable_gps">Please grant precise location permission and enable GPS</string>
 </resources>
