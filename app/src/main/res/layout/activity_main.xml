@@ -9,21 +9,17 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_height="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
-        android:animateLayoutChanges="false"
         app:layout_constraintBottom_toBottomOf="@+id/fragment_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        android:background="@drawable/bottom_nav_bg"
-        app:labelVisibilityMode="selected"
         app:itemHorizontalTranslationEnabled="true"
-        app:itemIconSize="28dp"
-        app:itemRippleColor="@color/primary_lighter"
-        app:itemIconTint="@color/primary"
-        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="selected"
+        app:itemIconSize="25dp"
+        android:layout_marginBottom="25dp"
+        style="@style/App.Custom.BottomNavigationView"
         />
 
     <FrameLayout
