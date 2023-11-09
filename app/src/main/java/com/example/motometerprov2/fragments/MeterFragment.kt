@@ -5,23 +5,23 @@ import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.content.Context.POWER_SERVICE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import com.example.motometerprov2.databinding.FragmentMeterBinding
 
-class MeterFragment: Fragment() {
+class MeterFragment : Fragment() {
     private lateinit var binding: FragmentMeterBinding
     private var wakeLock: PowerManager.WakeLock? = null
 
@@ -30,12 +30,19 @@ class MeterFragment: Fragment() {
 
     private lateinit var locationManager: LocationManager
     private lateinit var locationListener: LocationListener
+
+    private var lastLocation: Location? = null
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private var totalDistanceCovered = 0.0
+    private val tripKmKey = "trip_km"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentMeterBinding.inflate(layoutInflater)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -43,8 +50,16 @@ class MeterFragment: Fragment() {
 
         fineLocation = Manifest.permission.ACCESS_FINE_LOCATION
         granted = PackageManager.PERMISSION_GRANTED
-        
+        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         locationManager = requireContext().getSystemService(LOCATION_SERVICE) as LocationManager
+
+        totalDistanceCovered = sharedPreferences.getFloat(tripKmKey, 0.0f).toDouble()
+
+        val storedTrip = sharedPreferences.getFloat(tripKmKey, 0.0f).toDouble()
+        if (storedTrip >= 0.001f) {
+            totalDistanceCovered = storedTrip
+            updateTripKmText()
+        }
 
         val isGpsProviderEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
         if (!isGpsProviderEnabled) {
@@ -61,8 +76,19 @@ class MeterFragment: Fragment() {
                 val speed = location.speed * 3.6 // Convert to km/h
                 binding.speedTextView.text = "%.0f".format(speed)
             } else {
-                Log.d("Speed", "Speed data not available")
+                binding.speedTextView.error = "Speed data not available"
             }
+
+            // Calculate distance and update the trip distance text view
+            if (lastLocation != null) {
+                val distanceInMeters = lastLocation?.distanceTo(location) ?: 0.0
+                totalDistanceCovered += distanceInMeters.toFloat()
+                updateTripKmText()
+
+                // Store the updated trip km in SharedPreferences
+                storeTrip(totalDistanceCovered.toFloat())
+            }
+            lastLocation = location
         }
         if (ActivityCompat.checkSelfPermission(requireContext(), fineLocation) == granted) {
             locationManager.requestLocationUpdates(
@@ -73,8 +99,17 @@ class MeterFragment: Fragment() {
             )
         }
     }
+    private fun updateTripKmText() {
+        binding.tripKm.text = "%.1usf km".format(totalDistanceCovered / 1000.0)
+    }
+    private fun storeTrip(totalDistanceCovered: Float) {
+        with(sharedPreferences.edit()) {
+            putFloat(tripKmKey, totalDistanceCovered)
+            apply()
+        }
+    }
 
-    private fun turnOnGPS(){
+    private fun turnOnGPS() {
         Toast.makeText(requireContext(), "Please turn on Location", Toast.LENGTH_LONG).show()
         val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
         startActivity(intent)
