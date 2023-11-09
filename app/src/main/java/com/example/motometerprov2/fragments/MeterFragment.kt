@@ -67,6 +67,19 @@ class MeterFragment : Fragment() {
         } else {
             requestLocationUpdates()
         }
+
+        binding.tripReset.setOnClickListener {
+            resetTrip()
+        }
+    }
+
+    private fun resetTrip() {
+        totalDistanceCovered = 0.0
+        updateTripKmText()
+        with(sharedPreferences.edit()) {
+            putFloat(tripKmKey, 0.0f)
+            apply()
+        }
     }
 
     private fun requestLocationUpdates() {
@@ -100,7 +113,7 @@ class MeterFragment : Fragment() {
         }
     }
     private fun updateTripKmText() {
-        binding.tripKm.text = "%.1usf km".format(totalDistanceCovered / 1000.0)
+        binding.tripKm.text = "%.1f KM".format(totalDistanceCovered / 1000.0)
     }
     private fun storeTrip(totalDistanceCovered: Float) {
         with(sharedPreferences.edit()) {
