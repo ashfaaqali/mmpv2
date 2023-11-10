@@ -14,55 +14,75 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.google.android.material.textview.MaterialTextView
+        <LinearLayout
+            android:id="@+id/hint_layout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Turn on auto call rejection feature to\nreject calls automatically while riding.\nRejected calls will be shows here."
-            android:padding="8dp"
-            android:background="@color/primary_light"
-            android:drawableStart="@drawable/baseline_lightbulb_24"
-            android:drawableTint="@color/primary"
-            android:drawablePadding="8dp"/>
+            android:layout_height="85dp"
+            android:background="@drawable/auto_call_reject_hint_bg"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:src="@drawable/baseline_lightbulb_24"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/auto_reject_hint"
+                android:padding="8dp"/>
+
+            <ImageView
+                android:id="@+id/hint_close_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:padding="8dp"
+                android:src="@drawable/baseline_close_24"/>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/call_reject_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_call_end_24"
-            app:tint="#842D41"
             android:padding="8dp"
-            android:visibility="gone"/>
+            android:src="@drawable/baseline_call_end_24"
+            android:visibility="gone"
+            app:tint="#842D41" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/call_reject_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:backgroundTint="#CF365A">
+            android:backgroundTint="#CF365A"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/rejected_call_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Call rejected from "
-                android:textSize="18sp"
-                android:textColor="@color/white" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/rejected_call_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Call rejected from "
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/callback_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tap to call"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#842D41"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/callback_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#842D41"
+                    android:text="Tap to call"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -105,12 +125,12 @@
             android:id="@+id/trip_reset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Trip"
-            android:textColor="@color/primary"
-            android:textSize="20sp"
             android:drawableEnd="@drawable/baseline_restart_alt_24"
             android:drawablePadding="10dp"
-            android:drawableTint="@color/primary"/>
+            android:drawableTint="@color/primary"
+            android:text="Trip"
+            android:textColor="@color/primary"
+            android:textSize="20sp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/trip_km"
@@ -119,7 +139,7 @@
             android:text="0.0 KM"
             android:textColor="@color/primary"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

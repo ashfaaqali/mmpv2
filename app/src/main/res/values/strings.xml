@@ -10,4 +10,5 @@
     <string name="please_grant_permission_and_enable_location">Please grant permission and enable Location</string>
     <string name="give_permission_and_enable_location">Give permission and enable Location</string>
     <string name="please_grant_precise_location_permission_and_enable_gps">Please grant precise location permission and enable GPS</string>
+    <string name="auto_reject_hint">Turn on auto call rejection feature to\nreject calls automatically while riding.\nRejected calls will be shows here.</string>
 </resources>
