@@ -6,6 +6,7 @@ import android.content.Context.LOCATION_SERVICE
 import android.content.Context.POWER_SERVICE
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -13,6 +14,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,8 +36,11 @@ class MeterFragment : Fragment() {
     private var lastLocation: Location? = null
 
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferencesEditor: Editor
     private var totalDistanceCovered = 0.0
     private val tripKmKey = "trip_km"
+
+    private val isFirstLaunchKey = "is_first_launch"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -52,8 +57,13 @@ class MeterFragment : Fragment() {
         granted = PackageManager.PERMISSION_GRANTED
         sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         locationManager = requireContext().getSystemService(LOCATION_SERVICE) as LocationManager
-
+        sharedPreferencesEditor = sharedPreferences.edit()
         totalDistanceCovered = sharedPreferences.getFloat(tripKmKey, 0.0f).toDouble()
+
+        val isFirstLaunch = sharedPreferences.getBoolean(isFirstLaunchKey, false)
+        if (isFirstLaunch){
+            removeAutoCallRejectHint()
+        }
 
         val storedTrip = sharedPreferences.getFloat(tripKmKey, 0.0f).toDouble()
         if (storedTrip >= 0.001f) {
@@ -71,15 +81,24 @@ class MeterFragment : Fragment() {
         binding.tripReset.setOnClickListener {
             resetTrip()
         }
+
+        binding.hintCloseBtn.setOnClickListener {
+            removeAutoCallRejectHint()
+        }
+    }
+
+    private fun removeAutoCallRejectHint() {
+        binding.hintLayout.visibility = View.GONE
+        binding.tripMainLayout.gravity = Gravity.CENTER
+
+        sharedPreferencesEditor.putBoolean(isFirstLaunchKey, true)
     }
 
     private fun resetTrip() {
         totalDistanceCovered = 0.0
         updateTripKmText()
-        with(sharedPreferences.edit()) {
-            putFloat(tripKmKey, 0.0f)
-            apply()
-        }
+        sharedPreferencesEditor.putFloat(tripKmKey, 0.0f)
+        sharedPreferencesEditor.apply()
     }
 
     private fun requestLocationUpdates() {
@@ -116,10 +135,8 @@ class MeterFragment : Fragment() {
         binding.tripKm.text = "%.1f KM".format(totalDistanceCovered / 1000.0)
     }
     private fun storeTrip(totalDistanceCovered: Float) {
-        with(sharedPreferences.edit()) {
-            putFloat(tripKmKey, totalDistanceCovered)
-            apply()
-        }
+        sharedPreferencesEditor.putFloat(tripKmKey, totalDistanceCovered)
+        sharedPreferencesEditor.apply()
     }
 
     private fun turnOnGPS() {
