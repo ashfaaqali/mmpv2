@@ -1,19 +1,31 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MotoMeterProv2" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/primary</item>
+    <style name="Theme.MotoMeterProv2" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <item name="colorPrimary">@color/primary_dark</item>
         <item name="colorSurface">@color/primary_light</item>
-        <item name="android:navigationBarColor">@color/primary</item>
+        <item name="android:navigationBarColor">@color/primary_dark</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
-
     </style>
 
     <style name="App.Custom.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
         <item name="itemActiveIndicatorStyle">@null</item>
         <item name="itemRippleColor">@null</item>
+        <item name="itemIconTint">@color/primary_dark</item>
+        <item name="itemTextColor">@color/primary_dark</item>
+        <item name="android:background">@color/primary_light</item>
     </style>
 
-    <style name="Theme.MotoMeterProv2" parent="Base.Theme.MotoMeterProv2" />
+    <style name="DayNightSettingItem">
+        <item name="android:background">@color/primary_darker</item>
+    </style>
+
+    <style name="DayNightTextAppearance">
+        <item name="android:textColor">@color/primary_light</item>
+    </style>
+
+    <style name="DayNightLinearLayout">
+        <item name="android:background">@color/primary_dark</item>
+    </style>
 </resources>
