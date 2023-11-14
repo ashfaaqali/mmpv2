@@ -37,10 +37,9 @@ class MainActivity : AppCompatActivity() {
 
         signInAnonymously()
 
-        checkUpdate()
-
         appUpdate = AppUpdateManagerFactory.create(this)
 
+        checkUpdate()
 
         setFragment(MeterFragment())
         // Handle bottom navigation item selection
