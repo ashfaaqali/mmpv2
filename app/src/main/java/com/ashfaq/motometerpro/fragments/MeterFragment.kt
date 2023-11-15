@@ -1,4 +1,4 @@
-package com.example.motometerprov2.fragments
+package com.ashfaq.motometerpro.fragments
 
 import android.Manifest
 import android.content.Context
@@ -19,7 +19,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import com.example.motometerprov2.databinding.FragmentMeterBinding
+import com.ashfaq.motometerpro.databinding.FragmentMeterBinding
 
 class MeterFragment : Fragment() {
     private lateinit var binding: FragmentMeterBinding

@@ -1,4 +1,4 @@
-package com.example.motometerprov2
+package com.ashfaq.motometerpro
 
 import org.junit.Test
 

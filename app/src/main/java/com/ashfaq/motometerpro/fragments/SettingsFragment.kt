@@ -1,4 +1,4 @@
-package com.example.motometerprov2.fragments
+package com.ashfaq.motometerpro.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.motometerprov2.databinding.FragmentSettingsBinding
+import com.ashfaq.motometerpro.databinding.FragmentSettingsBinding
 
 class SettingsFragment: Fragment() {
     private lateinit var binding: FragmentSettingsBinding

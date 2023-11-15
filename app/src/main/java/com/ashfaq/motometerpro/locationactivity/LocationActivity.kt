@@ -1,4 +1,4 @@
-package com.example.motometerprov2.locationactivity
+package com.ashfaq.motometerpro.locationactivity
 
 import android.Manifest
 import android.content.Intent
@@ -7,10 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
-import com.example.motometerprov2.MainActivity
-import com.example.motometerprov2.R
-import com.example.motometerprov2.databinding.ActivityLocationBinding
-import com.example.motometerprov2.databinding.FragmentMeterBinding
+import com.ashfaq.motometerpro.MainActivity
+import com.ashfaq.motometerpro.databinding.ActivityLocationBinding
 
 class LocationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLocationBinding
