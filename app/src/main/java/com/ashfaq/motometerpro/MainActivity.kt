@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
-import com.ashfaq.motometerpro.databinding.ActivityMainBinding
 import com.ashfaq.motometerpro.fragments.MeterFragment
 import com.ashfaq.motometerpro.fragments.SettingsFragment
+import com.example.motometerprov2.R
+import com.example.motometerprov2.databinding.ActivityMainBinding
 
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
