@@ -60,4 +60,7 @@ dependencies {
     // in app updates
     implementation("com.google.android.play:app-update-ktx:2.1.0")
 
+    // Lottie
+    implementation ("com.airbnb.android:lottie:6.0.0")
+
 }

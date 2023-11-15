@@ -19,7 +19,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import com.ashfaq.motometerpro.databinding.FragmentMeterBinding
+import com.example.motometerprov2.databinding.FragmentMeterBinding
 
 class MeterFragment : Fragment() {
     private lateinit var binding: FragmentMeterBinding

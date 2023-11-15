@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.app.ActivityCompat
 import com.ashfaq.motometerpro.MainActivity
-import com.ashfaq.motometerpro.databinding.ActivityLocationBinding
+import com.example.motometerprov2.databinding.ActivityLocationBinding
 
 class LocationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLocationBinding
