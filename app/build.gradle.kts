@@ -10,7 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.motometerprov2"
+        applicationId = "com.ashfaq.motometerpro"
         minSdk = 24
         targetSdk = 33
         versionCode = 1
