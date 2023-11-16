@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "831192436657",
+    "project_id": "motometerpro",
+    "storage_bucket": "motometerpro.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831192436657:android:7ef4383c8ae8517a177790",
+        "android_client_info": {
+          "package_name": "com.ashfaq.motometerpro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEAD8aRGO7Nb_ZVy_xpmN6UekibGGcYRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
