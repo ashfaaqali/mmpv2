@@ -3,6 +3,7 @@ package com.ashfaq.motometerpro.locationactivity
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -21,6 +22,12 @@ class LocationActivity : AppCompatActivity() {
 
         fineLocation = Manifest.permission.ACCESS_FINE_LOCATION
         granted = PackageManager.PERMISSION_GRANTED
+
+        // Change the status bar color
+        window.statusBarColor = Color.WHITE
+
+        // Change the navigation bar color
+        window.navigationBarColor = Color.WHITE
 
         // Check if location permission is already granted
         if (isLocationPermissionGranted()) {
