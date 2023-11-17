@@ -28,13 +28,6 @@ class SplashActivity : AppCompatActivity() {
                 finish()
             }
         }, 5200)
-
-        // Change the status bar color
-        window.statusBarColor = Color.BLACK
-
-        // Change the navigation bar color
-        window.navigationBarColor = Color.BLACK
-
     }
 
     private fun navigateToLocationActivity() {
