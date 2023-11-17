@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-        }, 5200)
+        }, 3000)
     }
 
     private fun navigateToLocationActivity() {
